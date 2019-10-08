@@ -1,4 +1,5 @@
 var express = require('express')
+var socket = require('socket.io')
 
 // App setup
 
@@ -9,3 +10,11 @@ var server = app.listen(3000, function (){
 
 //static files
 app.use(express.static('public'))
+
+//npm install socket.io --save
+
+//socket setup
+var io = socket(server)
+ io.on('connection', function(socket){
+     console.log('made socket connection',socket.id)
+ })
